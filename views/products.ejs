@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Products - <%= category %></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
             </div>
             <div class="heading-1">
               <span class="rapidement">
-              rapidement
+                 <%= category %>
               </span>
             </div>
             <div class="margin-24">
@@ -100,6 +100,7 @@
           </div>
         </div>
         
+        
         <div class="section-5">
           <div class="heading-23">
             <span class="meilleures-offres">Meilleures offres</span>
@@ -113,7 +114,7 @@
             <form id="filters-form" method="GET" action="/products/filter">
               <input type="number" name="minPrice" placeholder="Min Price" />
               <input type="number" name="maxPrice" placeholder="Max Price" />
-              <input type="text" name="categories" placeholder="Categories (comma separated)" />
+              <input type="text" name="categories" value="<%= category %>" readonly />
               <button type="submit">Filter</button>
             </form>
           </div>
@@ -165,7 +166,7 @@
             window.location.href = url;
           }
         </script>
-        
+
 
         <div class="section">
           <div class="heading-47">
@@ -182,64 +183,6 @@
             <span class="dcouvrir-plus">
             Découvrir plus
             </span>
-          </div>
-        </div>
-        <div class="heading-21">
-          <span class="categories">
-          Categories
-          </span>
-        </div>
-        <div class="group-3">
-          <div class="section-2">
-
-            <a href="/products/Mens-Athletic-Shoes">
-              <div class="background-10">
-                <span class="hommes">
-                  Hommes
-                </span>
-              </div>
-            </a>
-
-            <a href="/products/Women-Boots">
-              <div class="background-11">
-                <span class="femmes">
-                  Femmes
-                </span>
-              </div>
-            </a>
-
-          </div>
-          <div class="section-1">
-            <div class="margin-6">
-              <a href="/products/Electronics">
-                <div class="background-7">
-                  <span class="electronics">
-                    Electronics
-                  </span>
-                </div>
-              </a>
-
-            </div>
-            <div class="margin-7">
-              <a href="/products/Earrings">
-                <div class="background-8">
-                  <span class="accessoires-bijoux-sacs">
-                    Accessoires,Bijoux,Sacs
-                  </span>
-                </div>
-              </a>
-
-            </div>
-            <div class="margin-8">
-              <a href="/products/T-shirts">
-              <div class="background-9">
-                <span class="tshirts">
-                T-SHIRTS
-                </span>
-              </div>
-              </a>
-            </div>
-
           </div>
         </div>
         <div class="footer">
@@ -415,17 +358,14 @@
             </span>
           </div>
         </div>
-
         <div class="search-input">
           <img class="search" src="../assets/vectors/search_x2.svg" />
           <input type="text" id="search-query" placeholder="What can we help you find...">
         </div>
         
-        
       </div>
     </div>
   </body>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     *{
@@ -2610,44 +2550,10 @@
       width: 1600px;
       box-sizing: border-box;
     }
-
-    .search-input {
-  position: relative;
-  width: 300px;
-}
-
-#search-query {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.dropdown-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1000;
-  display: none; /* Initially hidden */
-}
-
-.dropdown-results div {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.dropdown-results div:hover {
-  background-color: #f0f0f0;
-}
-
     
   </style>
 
-<script>
+  <script>
   document.getElementById('search-query').addEventListener('input', function() {
     const query = this.value;
     fetch(`/products/search?q=${encodeURIComponent(query)}`)
@@ -2694,9 +2600,5 @@
     window.location.href = link;
   }
 </script>
-
-
-
-
 
 </html>
